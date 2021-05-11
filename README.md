@@ -1,1 +1,1 @@
-# TODO by Sergey Tarasevich
+# TODO list React by Sergey Tarasevich
