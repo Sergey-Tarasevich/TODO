@@ -1,15 +1,15 @@
 import React from 'react';
 import Header from './Header/header';
+import Footer from './Footer/Footer';
 import './App.css';
 
-class App extends React.Component {
-  render() {
-    return (
-      <div className="App">
-        <Header />
-      </div>
-    );
-  }
-}
+const App = () => {
+  return (
+    <div className="App">
+      <Header />
+      <Footer />
+    </div>
+  );
+};
 
 export default App;
