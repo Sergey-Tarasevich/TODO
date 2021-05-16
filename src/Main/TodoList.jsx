@@ -74,11 +74,7 @@ class TodoList extends React.Component {
                       <li key={item.id}>
                         {item.value}
 
-                        <label
-                          // onClick={handleChangeTextColor}
-                          // onChange={handleChangeStyleText}
-                          className="switch"
-                        >
+                        <label className="switch">
                           <input type="checkbox" />
                         </label>
 
