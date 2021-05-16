@@ -13,6 +13,7 @@ const Header = () => {
         <img src={logo} className="React-logo" alt="logoReact" />
         <div className="Text-header-logoReact">
           {' '}
+          TODO React
           <Clock />
         </div>
         <img src={epam} className="Epam-logo" alt="logoEpam" />

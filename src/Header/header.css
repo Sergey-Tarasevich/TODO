@@ -30,10 +30,6 @@
   color: white;
 }
 
-.Clock {
-  color: rgba(84, 215, 255, 0.699);
-}
-
 
 @media (prefers-reduced-motion: no-preference) {
   .React-logo {

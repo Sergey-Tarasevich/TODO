@@ -1,25 +1,27 @@
-import React from 'react';
-import './Footer.css';
+import React from 'react'
+import './Footer.css'
 
-//create Footer
 const Footer = () => {
-  return (
-    <footer className="footer">
-      <div>Edit src/App.js and save to reload.</div>
+return (
+<footer className="footer">
 
-      <div>
-        {/* create click link to ru.reactjs.org */}
-        <a
-          className="link-footer"
-          href="https://https://ru.reactjs.org/docs/getting-started.html"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </div>
-    </footer>
-  );
-};
+  <div>
+    Edit src/App.js and save to reload.
+  </div>
+
+  <div>
+  <a
+    className="link-footer"
+    href="https://https://ru.reactjs.org/docs/getting-started.html"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Learn React
+  </a>
+  </div>
+
+</footer>
+  )
+}
 
 export default Footer;

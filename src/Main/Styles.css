@@ -1,0 +1,19 @@
+
+.value-completed {
+  text-decoration: line-through;
+  color: green;
+}
+
+.container {
+  font-size: 20px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.inputForm {
+  display: flex;
+
+  /* background-color: red; */
+}
