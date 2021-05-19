@@ -1,98 +1,74 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import TodoListCss from './TodoListCss.module.css';
+const TodoList = (prop) => {
+  // initial hooks
+  const [value, setValue] = useState('');
+  const [list, setList] = useState([]);
 
-// create new class component for TODO List
-class TodoList extends React.Component {
-  constructor(props) {
-    super(props);
-    // create state only in constructor
-    this.state = {
-      newItem: '',
-      list: [],
-    };
-  }
-
-  updateInput(key, value) {
+  const updateInput = (e) => {
+    localStorage.setItem('', e.target.value);
     //update react state
-    this.setState({
-      [key]: value,
-    });
-  }
+    setValue(e.target.value);
+  };
 
-  addItem(e) {
+  const addTask = (e) => {
     e.preventDefault();
-    //create item with unique id
-    const newItem = {
-      id: 1 + Math.random(),
-      value: this.state.newItem.slice(),
-    };
 
-    // copy of current list of items
-    const list = [...this.state.list];
+    //create item task with unique id
+    setList([
+      ...list,
+      {
+        id: 1 + Math.random(),
+        value: value.slice(),
+        completed: false,
+        sorted: false,
+      },
+    ]);
+  };
 
-    //add new item to list
-    list.push(newItem);
+  return (
+    <div className="container">
+      <h3>TODO or NOT TODO that is the question</h3>
 
-    // update state with new list and reset newItem input
-    this.setState({
-      list,
-      newItem: '',
-    });
-  }
-
-  deleteItem(id) {
-    //copy current list of items
-    const list = [...this.state.list];
-
-    //filter out item being deleted
-    const updatedList = list.filter((item) => item.id !== id);
-
-    this.setState({ list: updatedList });
-  }
-
-  render() {
-    return (
-      <div className={TodoListCss.TodoList}>
-        <section>
-          <div>
-            TODO's LIST
-            <br />
-            <form onSubmit={this.addItem}>
-              <input
-                type="text"
-                placeholder="Type your TODO here..."
-                value={this.state.newItem}
-                onChange={(e) => this.updateInput('newItem', e.target.value)}
-              />
-              <button onClick={(e) => this.addItem(e)}>Add TODO</button>
-              <span>
-                <ul>
-                  {this.state.list.map((item) => {
-                    return (
-                      //add li with unique id
-                      <li key={item.id}>
-                        {item.value}
-
-                        <label className="switch">
-                          <input type="checkbox" />
-                        </label>
-
-                        <button onClick={() => this.deleteItem(item.id)}>
-                          X
-                        </button>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </span>
-            </form>
-            <br />
+      <form className="form-horizontal">
+        <div className="form-group">
+          <label className="input-label">TODO's LIST</label>
+          <div className="input-form">
+            <input
+              name="value"
+              type="text"
+              value={value}
+              onChange={updateInput}
+              placeholder="Type your TODO here..."
+            />
           </div>
-        </section>
-      </div>
-    );
-  }
-}
+        </div>
+        <div className="form-group-btn">
+          <div>
+            <button className="btn-addTask" type="submit" onClick={addTask}>
+              Add TODO
+            </button>
+
+            <div></div>
+          </div>
+        </div>
+      </form>
+
+      <hr />
+
+      <ul className="list-group">
+        {list.map((value) => (
+          <li className="list-group-item" key={value.id}>
+            <span className={value.completed ? 'value-completed' : undefined}>
+              <div className="list-group-item-priority"></div>
+
+              {value.value}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 export default TodoList;
