@@ -23,6 +23,9 @@ const TodoList = () => {
         sorted: false,
       },
     ]);
+
+    // return empty input
+    setValue('');
   };
 
   const deleteTask = (id) => {
