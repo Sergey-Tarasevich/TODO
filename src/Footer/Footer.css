@@ -1,16 +1,12 @@
 .footer {
-  /* display: flex;
-  justify-content: space-around; */
   display: flex;
-    justify-content: space-around;
-    /* flex: 0 0 auto; */
-    /* display: table-row; */
-    /* height: 100%; */
-    position: absolute;
-    /* left: 0; */
-    bottom: 0;
-    width: 100%;
-    height: 80px;
+  justify-content: space-around;
+
+  position: absolute;
+
+  bottom: 0;
+  width: 100%;
+  height: 80px;
 }
 
 .link-footer {
