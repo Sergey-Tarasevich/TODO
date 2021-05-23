@@ -1,24 +1,51 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import './Styles.css';
 
 const TodoList = () => {
   // initial hooks
   const [value, setValue] = useState(localStorage.getItem('value') || '');
+  const [priority, setPriority] = useState(
+    localStorage.getItem('priority') || ''
+  );
   const [list, setList] = useState([]);
 
+  //set hooks color text
+  const [textColor, setTextColor] = useState('red');
+  //set hooks style text
+  const [styleText, setStyleText] = useState('none');
+
+  // const handleChangeTextStyle = () => {
+  //   setTextColor(textColor === 'green' ? 'red' : 'green');
+  //   setStyleText(styleText === 'line-through' ? 'none' : 'line-through');
+  // };
+
   const updateInput = (e) => {
+    localStorage.setItem('', e.target.value);
     //update react state
     setValue(e.target.value);
+  };
+  const updateInputPriority = (e) => {
+    localStorage.setItem('', e.target.priority);
+    //update react state
+    setPriority(e.target.value);
   };
 
   const addTask = (e) => {
     e.preventDefault();
+    if (value === '') return alert('Need enter TODO task');
+
+    if (priority < 0 || priority > 5)
+      return alert('Need enter Priority number 1 - 5');
+    // if (priority === "") return setPriority("1");
+
     //create item task with unique id
     setList([
       ...list,
       {
         id: 1 + Math.random(),
         value: value.slice(),
+        priority: priority,
         completed: false,
         sorted: false,
       },
@@ -26,6 +53,29 @@ const TodoList = () => {
 
     // return empty input
     setValue('');
+    setPriority('');
+  };
+
+  // const sortTask = (e) => {
+  //   e.preventDefault();
+  //   const updatedListTodo = [...list].sort((a, b) => b.priority - a.priority);
+
+  //   const updatedListTodo = list.filter((value) => value.priority === 2);
+
+  //   const updatedListTodo = list.map((value) => {
+  //     return value.priority === 2
+  //   //     ? { ...value, priority: value.priority }
+  //       : value;
+  //   });
+
+  //   setList(updatedListTodo);
+  // };
+
+  const handleSubmitCourse = (e) => {
+    e.preventDefault();
+    // if (value === "") return;
+
+    // setValue("");
   };
 
   const deleteTask = (id) => {
@@ -40,8 +90,54 @@ const TodoList = () => {
     setList(updatedListTodo);
   };
 
+  const toggleTodo = (id) => {
+    const updatedListTodo = list.map((value) => {
+      return value.id === id
+        ? { ...value, completed: !value.completed }
+        : value;
+    });
+    setList(updatedListTodo);
+  };
+
+  const priorities = [
+    {
+      value: 'ONE',
+      label: '1',
+    },
+    {
+      value: 'TWO',
+      label: '2',
+    },
+    {
+      value: 'THREE',
+      label: '3',
+    },
+    {
+      value: 'FOUR',
+      label: '4',
+    },
+    {
+      value: 'FIVE',
+      label: '5',
+    },
+  ];
+
+  const Options = ({ options }) => {
+    return options.map((option) => (
+      <option key={option.value} value={option.label}>
+        {option.label}
+      </option>
+    ));
+  };
+
+  // const handleChangeCourse = (e) => {
+  //   setList({ list: e.target.value });
+  // };
+
   return (
-    <div className="container">
+    <div className="container" onSubmit={handleSubmitCourse}>
+      {/* {TodoListCss.TodoList} */}
+
       <h3>TODO or NOT TODO that is the question</h3>
       <hr />
 
@@ -56,11 +152,19 @@ const TodoList = () => {
               onChange={updateInput}
               placeholder="Type your TODO here..."
             />
+
+            <input
+              name="priority"
+              type="number"
+              defaultValue="0"
+              value={priority}
+              onChange={updateInputPriority}
+              placeholder="Type your PRIORITY..."
+            />
           </div>
         </div>
         <div className="form-group-btn">
           <div>
-            {/* button add todo item */}
             <button className="btn-addTask" type="submit" onClick={addTask}>
               Add TODO
             </button>
@@ -72,6 +176,13 @@ const TodoList = () => {
             >
               CLEAR ALL TASK's
             </button>
+
+            <div>
+              <select type="text" className="form-control">
+                <Options options={priorities} />
+              </select>
+            </div>
+            {/* <ChooseTaskPriority  /> */}
           </div>
         </div>
       </form>
@@ -84,19 +195,24 @@ const TodoList = () => {
 
       <ul className="list-group">
         {list.map((value) => (
-          <li className="list-group-item" key={value.id}>
+          <li
+            className="list-group-item"
+            key={value.id}
+            style={{ color: textColor, textDecoration: styleText }}
+          >
             <span className={value.completed ? 'value-completed' : undefined}>
-              <div className="list-group-item-priority"></div>
+              <div className="list-group-item-priority">
+                <small> Priority {value.priority} </small>
+              </div>
               {value.value}
             </span>
-            {/* checkbox todo item */}
+
             <input
               type="checkbox"
               className="checkbox"
-
-              // onChange={handleChangeTextStyle}
+              onClick={() => toggleTodo(value.id)}
             />
-            {/* button delete todo item */}
+
             <button
               className="btn-deleteTask"
               onClick={() => deleteTask(value.id)}
