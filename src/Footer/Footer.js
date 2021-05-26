@@ -4,7 +4,7 @@ import './Footer.css';
 const Footer = () => {
   return (
     <footer className="footer">
-      <div>Edit src/App.js and save to reload.</div>
+      <div>Learn React and enjoy your new skills</div>
 
       <div>
         <a

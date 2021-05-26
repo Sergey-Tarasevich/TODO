@@ -1,4 +1,4 @@
-TODO List by Sergey Tarasevich React
+TODO List React by Sergey Tarasevich
 
 # Getting Started with Create React App
 
