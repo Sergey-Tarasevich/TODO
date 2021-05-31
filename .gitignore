@@ -12,9 +12,6 @@ node_modules/.cache
 # testing
 /coverage
 
-# production
-/build
-
 # misc
 .DS_Store
 .env.local
