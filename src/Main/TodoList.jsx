@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
+
 import './Styles.css';
 
 const TodoList = () => {
@@ -137,91 +138,102 @@ const TodoList = () => {
   return (
     <div className="container" onSubmit={handleSubmitCourse}>
       {/* {TodoListCss.TodoList} */}
+      <div className="row">
+        <h3 className="row-name-todo col-12 offset-lg-3 col-lg-6 alert alert-info">
+          TODO or NOT TODO that is the question
+        </h3>
+        <hr />
 
-      <h3>TODO or NOT TODO that is the question</h3>
-      <hr />
+        <form className="col-12 offset-lg-3 col-lg-6 form-horizontal">
+          <div className="form-group">
+            <label className="input-label alert alert-success">
+              TODO's LIST
+            </label>
+            <div className="input-form form-group">
+              <input
+                className="form-control"
+                name="value"
+                type="text"
+                value={value}
+                onChange={updateInput}
+                placeholder="Type your TODO here..."
+              />
 
-      <form className="form-horizontal">
-        <div className="form-group">
-          <label className="input-label">TODO's LIST</label>
-          <div className="input-form">
-            <input
-              name="value"
-              type="text"
-              value={value}
-              onChange={updateInput}
-              placeholder="Type your TODO here..."
-            />
-
-            <input
-              name="priority"
-              type="number"
-              defaultValue="0"
-              value={priority}
-              onChange={updateInputPriority}
-              placeholder="Type your PRIORITY..."
-            />
-          </div>
-        </div>
-        <div className="form-group-btn">
-          <div>
-            <button className="btn-addTask" type="submit" onClick={addTask}>
-              Add TODO
-            </button>
-
-            <button
-              className="btn-clearAllTask"
-              type="submit"
-              onClick={clearAllTask}
-            >
-              CLEAR ALL TASK's
-            </button>
-
-            <div>
-              <select type="text" className="form-control">
-                <Options options={priorities} />
-              </select>
+              <input
+                className="form-control"
+                name="priority"
+                type="number"
+                defaultValue="0"
+                value={priority}
+                onChange={updateInputPriority}
+                placeholder="Type your PRIORITY..."
+              />
             </div>
-            {/* <ChooseTaskPriority  /> */}
           </div>
-        </div>
-      </form>
+          <div className="form-group-btn">
+            <div className="group-btn">
+              <button
+                className="btn-addTask btn btn-primary"
+                type="submit"
+                onClick={addTask}
+              >
+                Add TODO
+              </button>
 
-      <hr />
+              <button
+                className="btn-clearAllTask btn btn-danger"
+                type="submit"
+                onClick={clearAllTask}
+              >
+                CLEAR ALL TASK's
+              </button>
 
-      <h4>
-        To Do Count: <span className="badge">{list.length}</span>
-      </h4>
-
-      <ul className="list-group">
-        {list.map((value) => (
-          <li
-            className="list-group-item"
-            key={value.id}
-            style={{ color: textColor, textDecoration: styleText }}
-          >
-            <span className={value.completed ? 'value-completed' : undefined}>
-              <div className="list-group-item-priority">
-                <small> Priority {value.priority} </small>
+              <div>
+                <select type="text" className="form-control">
+                  <Options options={priorities} />
+                </select>
               </div>
-              {value.value}
-            </span>
+              {/* <ChooseTaskPriority  /> */}
+            </div>
+          </div>
 
-            <input
-              type="checkbox"
-              className="checkbox"
-              onClick={() => toggleTodo(value.id)}
-            />
+          <hr />
 
-            <button
-              className="btn-deleteTask"
-              onClick={() => deleteTask(value.id)}
+          <h4 className="badge col-12 offset-ld-3 col-lg-6 alert alert-warning">
+            To Do Count: <span>{list.length}</span>
+          </h4>
+        </form>
+
+        <ul className="col-12 offset-lg-3 col-lg-6 list-group">
+          {list.map((value) => (
+            <li
+              className="list-group-item"
+              key={value.id}
+              style={{ color: textColor, textDecoration: styleText }}
             >
-              Delete Task
-            </button>
-          </li>
-        ))}
-      </ul>
+              <span className={value.completed ? 'value-completed' : undefined}>
+                <div className="list-group-item-priority">
+                  <small> Priority {value.priority} </small>
+                </div>
+                {value.value}
+              </span>
+
+              <input
+                type="checkbox"
+                className="checkbox"
+                onClick={() => toggleTodo(value.id)}
+              />
+
+              <button
+                className="btn-deleteTask"
+                onClick={() => deleteTask(value.id)}
+              >
+                Delete Task
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
