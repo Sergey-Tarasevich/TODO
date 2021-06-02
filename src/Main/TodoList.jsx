@@ -61,11 +61,11 @@ const TodoList = () => {
   //   e.preventDefault();
   //   const updatedListTodo = [...list].sort((a, b) => b.priority - a.priority);
 
-  //   const updatedListTodo = list.filter((value) => value.priority === 2);
+  //   const updatedListTodo = list.filter((value) => value.priority === value);
 
   //   const updatedListTodo = list.map((value) => {
   //     return value.priority === 2
-  //   //     ? { ...value, priority: value.priority }
+  //       ? { ...value, priority: value.priority }
   //       : value;
   //   });
 
@@ -131,13 +131,8 @@ const TodoList = () => {
     ));
   };
 
-  // const handleChangeCourse = (e) => {
-  //   setList({ list: e.target.value });
-  // };
-
   return (
     <div className="container" onSubmit={handleSubmitCourse}>
-      {/* {TodoListCss.TodoList} */}
       <div className="row">
         <h3 className="row-name-todo col-12 offset-lg-3 col-lg-6 alert alert-info">
           TODO or NOT TODO that is the question
@@ -187,13 +182,6 @@ const TodoList = () => {
               >
                 CLEAR ALL TASK's
               </button>
-
-              <div>
-                <select type="text" className="form-control">
-                  <Options options={priorities} />
-                </select>
-              </div>
-              {/* <ChooseTaskPriority  /> */}
             </div>
           </div>
 
