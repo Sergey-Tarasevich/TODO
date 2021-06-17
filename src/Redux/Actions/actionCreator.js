@@ -13,12 +13,12 @@ export function addTodo(todo) {
   };
 }
 
-export function handleKeyDown(todo) {
-  return {
-    type: ADD_TODO,
-    payload: todo,
-  };
-}
+// export function handleKeyDown(todo) {
+//   return {
+//     type: ADD_TODO,
+//     payload: todo,
+//   };
+// }
 
 export function clearAllTask(todoId) {
   return {
