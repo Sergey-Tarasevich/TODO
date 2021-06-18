@@ -5,6 +5,7 @@ import Header from './Components/Header/Header';
 import TodoInput from './Components/Main/TodoInput';
 import TodoList from './Components/Main/TodoList';
 import Footer from './Components/Footer/Footer';
+import ScrollToTopButton from './Components/ScrollToTopButton/ScrollToTopButton';
 
 import './App.css';
 
@@ -18,6 +19,7 @@ class App extends Component {
 
           <TodoList />
         </article>
+        <ScrollToTopButton />
         <Footer />
       </div>
     );
