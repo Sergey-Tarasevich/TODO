@@ -7,6 +7,7 @@ import thunk from 'redux-thunk';
 //   window.devToolsExtension ? window.devToolsExtension() : (f) => f
 // )(createStore)(reducer);
 
+// config redux
 const composeEnhancers =
   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ||
   compose(window.devToolsExtension ? window.devToolsExtension() : (f) => f);

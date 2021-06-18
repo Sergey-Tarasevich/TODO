@@ -18,10 +18,10 @@ function TodoInput() {
 
   const updateInput = (e) => {
     e.preventDefault();
-    const trimmedText = e.target.value.trim();
-    localStorage.setItem('value', trimmedText);
+
+    localStorage.setItem('value', e.target.value);
     //update react state
-    setValue(trimmedText);
+    setValue(e.target.value);
   };
 
   const updateInputPriority = (e) => {
@@ -33,8 +33,9 @@ function TodoInput() {
 
   const handleKeyDown = (event) => {
     const trimmedText = event.target.value.trim();
-    // if (value === '') return alert('Need enter TODO task')// if (priority < Number(0) || priority > Number(5))
-    // return alert('Need enter Priority number 1 - 5');
+    // if (value === '') return alert('Need enter TODO task');
+    if (priority < Number(0) || priority > Number(5))
+      return alert('Need enter Priority number 1 - 5');
 
     // If the user pressed the Enter key:
 

@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
-// import epam from './epam-logo.svg';
 import Header from './Components/Header/Header';
 import TodoInput from './Components/Main/TodoInput';
 import TodoList from './Components/Main/TodoList';
@@ -16,7 +14,6 @@ class App extends Component {
         <Header />
         <article className="TodoList">
           <TodoInput />
-
           <TodoList />
         </article>
         <ScrollToTopButton />
