@@ -50,12 +50,12 @@ ul {
   margin-bottom: 6px;
 }
 
-.checkbox {
+/* .checkbox {
   margin: 0px 13px;
   transform: scale(2);
   opacity: 0.9;
   cursor: pointer;
-}
+} */
 
 .badge {
   margin-top: 20px;
@@ -66,9 +66,24 @@ ul {
 .list-group-item {
   background-color: #282c34;
   border: none;
+  cursor: move;
 }
 
 /* drag and drop block  */
-.selected {
+/* .selected {
   opacity: 0.6;
+} */
+
+/* .characters {
+  list-style: none;
+  padding-left: 0;
 }
+
+.characters li {
+  display: flex;
+  align-items: center;
+  border: solid 2px #d0d0d0;
+  border-radius: 0.2em;
+  padding: 0.5em 0.8em 0.5em 0.5em;
+  margin-bottom: 1em;
+} */
