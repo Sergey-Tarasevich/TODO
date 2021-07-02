@@ -12,12 +12,12 @@ import './Styles.css';
 function TodoItem({ todo }) {
   // set hooks edit todo text in input
   const [editable, setEditable] = useState(false);
-  const [value, setValue] = useState(todo.name);
+  const [value, setValue] = useState(todo);
   //set hooks color text
   const [textColor, setTextColor] = useState('red');
   //set hooks style text
   const [styleText, setStyleText] = useState('none');
-  let todos = useSelector((state) => state);
+  // let todos = useSelector((state) => state);
   let dispatch = useDispatch();
 
   const handleChangeTextStyle = () => {

@@ -65,8 +65,14 @@ ul {
 /* change to tasks__item */
 .list-group-item {
   background-color: #282c34;
-  border: none;
-  cursor: move;
+  /*border: none;
+  cursor: move; */
+  user-select: none;
+  padding: 16;
+  margin: 0 0 8px 0;
+  min-height: 50px;
+
+  color: white;
 }
 
 /* drag and drop block  */
