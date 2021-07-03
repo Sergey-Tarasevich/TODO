@@ -5,6 +5,7 @@ import {
   DELETE_TODO,
   UPDATE_TODO,
   TOGGLE_TODO,
+  UPDATE_ON_DRAG_AND_DROP,
 } from '../Actions/actionsTypes';
 
 import { todos } from '../states';
@@ -49,6 +50,9 @@ export let reducer = (state = todos, action) => {
           : { ...todo };
       });
       return todoTask;
+
+    case UPDATE_ON_DRAG_AND_DROP:
+      return [...state];
 
     // No Default
   }

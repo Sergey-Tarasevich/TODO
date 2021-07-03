@@ -47,6 +47,7 @@ function TodoInput() {
           name: value,
           priority: priority,
           completed: false,
+          status: 'To do',
         })
       );
       // And clear out the text input
@@ -106,6 +107,7 @@ function TodoInput() {
                       name: value,
                       priority: priority,
                       completed: false,
+                      status: 'To do',
                     })
                   );
                   if (value === '') return alert('Need enter TODO task');

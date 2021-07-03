@@ -71,9 +71,17 @@ ul {
   padding: 16;
   margin: 0 0 8px 0;
   min-height: 50px;
+  display: flex;
+  justify-content: center;
+  height: 100%;
 
   color: white;
 }
+/* .list-group {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+} */
 
 /* drag and drop block  */
 /* .selected {

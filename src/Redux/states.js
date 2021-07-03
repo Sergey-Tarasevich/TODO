@@ -4,9 +4,10 @@ export let todos = [
   // { id: uuid(), name: 'value', priority: 1, completed: false },
   {
     id: uuid(),
-    name: 'Smile - your first Todo',
-    priority: '1',
-    completed: false,
-    items: [],
+    // name: 'Smile - your first Todo',
+    // priority: '1',
+    // completed: false,
+    // items: [],
+    // status: 'To do',
   },
 ];

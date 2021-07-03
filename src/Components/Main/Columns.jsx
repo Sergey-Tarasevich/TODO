@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import { useDispatch } from 'react-redux';
+import { updateOnDragAndDrop } from '../../Redux/Actions/actionCreator';
 
 import TodoList from './TodoList';
-import TodoItem from './TodoItem';
+// import TodoItem from './TodoItem';
 
 import { v1 as uuid } from 'uuid';
 
-function Columns({ todo, priority }) {
+function Columns() {
   let todos = useSelector((state) => state);
+  let dispatch = useDispatch();
 
   // const itemsFromBackend = [
   //   { id: uuid(), name: 'First task' },
@@ -19,7 +22,7 @@ function Columns({ todo, priority }) {
   //   { id: uuid(), name: "Fifth task" }
   // ];
 
-  const columnsFromBackend = {
+  const columnsTodos = {
     [uuid()]: {
       name: 'To do',
       items: [...todos],
@@ -34,7 +37,11 @@ function Columns({ todo, priority }) {
     },
   };
 
-  let [columns, setColumns] = useState(columnsFromBackend);
+  let [columns, setColumns] = useState(columnsTodos);
+
+  const updateState = () => {
+    dispatch(updateOnDragAndDrop());
+  };
 
   const onDragEnd = (result, columns, setColumns) => {
     if (!result.destination) return;
@@ -62,6 +69,7 @@ function Columns({ todo, priority }) {
       });
     } else {
       const column = columns[source.droppableId];
+      // Creating a copy of item before removing it from state
       const copiedItems = [...column.items];
       const [removed] = copiedItems.splice(source.index, 1);
       copiedItems.splice(destination.index, 0, removed);
@@ -73,6 +81,7 @@ function Columns({ todo, priority }) {
         },
       });
     }
+    updateState();
   };
 
   return (
@@ -89,6 +98,7 @@ function Columns({ todo, priority }) {
                 alignItems: 'center',
               }}
               key={columnId}
+              index={index}
             >
               <h2>{column.name}</h2>
 
@@ -97,9 +107,9 @@ function Columns({ todo, priority }) {
                 <Droppable droppableId={columnId} key={columnId}>
                   {(provided, snapshot) => {
                     return (
-                      <div
-                        ref={provided.innerRef}
+                      <ul
                         {...provided.droppableProps}
+                        ref={provided.innerRef}
                         style={{
                           background: snapshot.isDraggingOver
                             ? 'lightblue'
@@ -112,14 +122,16 @@ function Columns({ todo, priority }) {
                       >
                         {column.items.map((todo, index) => {
                           return (
-                            <Draggable
+                            <div>
+                              {/* <Draggable
                               key={todo.id}
                               draggableId={todo.id}
+                              todo={todo}
                               index={index}
                             >
                               {(provided, snapshot) => {
                                 return (
-                                  <div
+                                  <li
                                     ref={provided.innerRef}
                                     {...provided.draggableProps}
                                     {...provided.dragHandleProps}
@@ -136,20 +148,21 @@ function Columns({ todo, priority }) {
                                       color: 'white',
                                       ...provided.draggableProps.style,
                                     }}
-                                  >
-                                    <TodoList todo={todo.name} />
-                                    <TodoItem todo={todo} />
-                                    {todos.name}
-                                    <br />
-                                    Priority is: {todo.priority}
-                                  </div>
+                                  > */}
+                              <TodoList />
+                              {/* <TodoItem todo={todo} /> */}
+                              {/* Todo is: {todo.name}
+                              <br />
+                              Priority is: {todo.priority} */}
+                              {/* </li>
                                 );
                               }}
-                            </Draggable>
+                            </Draggable> */}
+                            </div>
                           );
                         })}
                         {provided.placeholder}
-                      </div>
+                      </ul>
                     );
                   }}
                 </Droppable>
