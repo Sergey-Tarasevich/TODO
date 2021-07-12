@@ -1,4 +1,4 @@
-TODO List React - Redux by Sergey Tarasevich
+TODO List React - Redux with Dnd (drag and drop) by Sergey Tarasevich
 
 Deploy: https://todo-list-react-sergey-tarasevich.netlify.app
 
